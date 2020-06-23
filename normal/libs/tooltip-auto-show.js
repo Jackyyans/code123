@@ -1,5 +1,6 @@
 /**
- * Created by chengwb on 2016/9/3.
+ *  @author  Created by chengwb on 2016/9/3.
+ *  @gitHub地址  https://github.com/chengwubin/echarts-tooltip-auto-show
  */
 (function (global) {
   global.tools = global.tools || {};
@@ -48,7 +49,6 @@
     //待处理列表
     //不循环series时seriesIndex指定显示tooltip的系列，不指定默认为0，指定多个则默认为第一个
     //循环series时seriesIndex指定循环的series，不指定则从0开始循环所有series，指定单个则相当于不循环，指定多个
-    //要不要添加开始series索引和开始的data索引？
 
     if (options) {
       options.interval = options.interval || defaultOptions.interval;

@@ -12,11 +12,11 @@
 <body>
   <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
   <div id="myCharts" style="width: 600px;height:400px;"></div>
-
   <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts-en.min.js"></script>
-  <!-- <script src="./libs/auto-tooltip.js"></script> -->
   <script src="./libs/tooltip-auto-show.js"></script>
   <script type="text/javascript">
+    // 用于清除定时器
+    var tootipTimer = null;
     // X轴数据
     var xAxisData = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
     // 需要渲染的series数据
@@ -24,7 +24,7 @@
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('myCharts'));
     // 指定图表的配置项和数据
-    var option = {
+    var chartOption = {
       tooltip: {
         trigger: 'axis'
       },
@@ -51,6 +51,7 @@
           name: '蒸发量',
           type: 'bar',
           itemStyle: {
+            // 柱状图的颜色，渐变色
             color: new echarts.graphic.LinearGradient(
               0, 0, 0, 1,
               [
@@ -64,13 +65,15 @@
         },
       ]
     };
-
     // 使用刚指定的配置项和数据显示图表
-    myChart.setOption(option);
-    // 有多少条数据
-    var xAxisDatalen = xAxisData.length;
-    tools.loopShowTooltip(myChart, option, {
-      loopSeries: true
+    myChart.setOption(chartOption);
+    // 可调用clearLoop方法，清除定时器
+    tootipTimer && tootipTimer.clearLoop();
+    tootipTimer = null;
+    // 调用轮播的方法
+    tootipTimer = tools.loopShowTooltip(myChart, chartOption, {
+      interval: 1000, // 轮播间隔时间
+      loopSeries: true // 是否开启轮播循环
     });
   </script>
 </body>
