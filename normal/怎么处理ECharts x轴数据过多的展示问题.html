@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="./image/logo.jpg" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>怎么处理ECharts x轴数据过多的展示问题?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="myCharts" style="width: 600px; height: 400px;"></div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts-en.min.js"></script>
+    <script type="text/javascript">
+      var options = {
+        xAxis: {
+          type: "category",
+          data: ["1999", "2000", "2001", "2002", "2003", "2004", "2005"],
+        },
+        yAxis: {},
+        dataZoom: [
+          {
+            type: "slider",
+            realtime: true,
+            start: 0,
+            end: 50,
+            xAxisIndex: [0],
+          },
+        ],
+        series: [
+          {
+            type: "bar",
+            barWidth: 12,
+            data: [143, 185, 193, 143, 185, 193, 50],
+          },
+        ],
+      };
+
+      var dom = document.getElementById("myCharts");
+      var myChart = echarts.init(dom);
+      myChart.setOption(options);
+    </script>
+  </body>
+</html>
