@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset='utf-8'>
+  <link rel="shortcut icon" href="./image/logo.jpg">
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>怎么让Highcharts的提示框tooltip自动轮播?</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+  <div id="container" style="height: 400px"></div>
+  <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+  <script src="https://code.highcharts.com.cn/highcharts/highcharts-3d.js"></script>
+  <script type="text/javascript">
+    var timer = null;
+    var chart = Highcharts.chart('container', {
+      chart: {
+        type: 'pie',
+        options3d: {
+          enabled: true,
+          alpha: 45,
+          beta: 0
+        },
+        events: {
+          // load，图表加载完成时触发
+          load: function () {
+            var chart = this;
+            var points = chart.series[0].points;
+            var len = points.length;
+            var i = 0;
+            timer && clearInterval(timer);
+            timer = setInterval(function () {
+              autoTooltip(points[i]);
+              i++;
+              if (i === len) {
+                i = 0;
+              }
+            }, 1000);
+          }
+        }
+      },
+      title: {
+        text: null
+      },
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          depth: 35,
+          dataLabels: {
+            enabled: true,
+            format: '{point.name}'
+          }
+        }
+      },
+      series: [{
+        type: 'pie',
+        name: '浏览器占比',
+        data: [
+          ['Firefox', 45.0],
+          ['IE', 26.8],
+          {
+            name: 'Chrome',
+            y: 12.8,
+            sliced: true,
+            selected: true
+          },
+          ['Safari', 8.5],
+          ['Opera', 6.2],
+          ['Others', 0.7]
+        ]
+      }]
+    });
+    function autoTooltip(point) {
+      chart.tooltip.refresh(point);
+    }
+  </script>
+</body>
+
+</html>
