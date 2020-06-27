@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="./image/logo.jpg" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>怎么处理ECharts超长的标签文本?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="myCharts1" style="width: 600px; height: 300px;"></div>
+    <div id="myCharts2" style="width: 600px; height: 300px;"></div>
+    <div id="myCharts3" style="width: 600px; height: 300px;"></div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts-en.min.js"></script>
+    <script type="text/javascript">
+      var axisLabel2 = {
+        formatter: function (value, index) {
+          console.log(value, index);
+          if (value.length > 3) {
+            return value.slice(0, 3) + "..."; //标签截取
+          }
+          return value;
+        },
+      };
+
+      var axisLabel3 = {
+        rotate: -20, //标签旋转的角度
+      };
+
+      var options = {
+        xAxis: {
+          type: "category",
+          data: [
+            "印度尼西亚",
+            "马来西亚",
+            "巴基斯坦",
+            "斯洛文尼亚",
+            "安哥拉",
+            "澳大利亚",
+            "哥斯达黎加",
+          ],
+        },
+        yAxis: {},
+        series: [
+          {
+            type: "bar",
+            barWidth: 30,
+            data: [143, 185, 193, 143, 185, 193, 50],
+          },
+        ],
+      };
+
+      var dom1 = document.getElementById("myCharts1");
+      var myChart1 = echarts.init(dom1);
+      myChart1.setOption(options);
+
+      var dom2 = document.getElementById("myCharts2");
+      var myChart2 = echarts.init(dom2);
+      options.xAxis.axisLabel = axisLabel2;
+      myChart2.setOption(options);
+
+      var dom3 = document.getElementById("myCharts3");
+      var myChart3 = echarts.init(dom3);
+      options.xAxis.axisLabel = axisLabel3;
+      myChart3.setOption(options);
+    </script>
+  </body>
+</html>
