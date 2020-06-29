@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset='utf-8'>
+  <link rel="shortcut icon" href="./image/logo.jpg">
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>怎么让ECharts饼图的label标签不重叠?</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+  <div id="myCharts" style="width: 400px;height:200px;"></div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts-en.min.js"></script>
+  <script src="./libs/tooltip-auto-show.js"></script>
+  <script type="text/javascript">
+    // 需要渲染的series数据
+    var seriesData = [{
+      name: 'Chrome',
+      value: 61.41
+    }, {
+      name: 'IE',
+      value: 11.84
+    }, {
+      name: 'Firefox',
+      value: 10.85
+    }, {
+      name: 'Edge',
+      value: 4.67
+    }, {
+      name: 'Safari',
+      value: 1.18
+    }, {
+      name: 'Sogou Explorer',
+      value: 0.64
+    }, {
+      name: 'Opera',
+      value: 0.6
+    }, {
+      name: 'QQ',
+      value: 0.2
+    }, {
+      name: 'Other',
+      value: 0.61
+    }];
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('myCharts'));
+    // 指定图表的配置项和数据
+    var chartOption = {
+      color: ['#7cb5ec', '#434348', '#90ed7d', '#f7a35c', '#8085e9',
+        '#f15c80', '#e4d354', '#8085e8', '#8d4653', '#91e8e1'],
+      series: [
+        {
+          radius: [0, '50%'], // 设置饼图的半径
+          type: 'pie',
+          label: {
+            formatter: '{b}: {d}%',
+            // alignTo: 'labelLine', // 'edge', 'labelLine', 默认是'none'
+          },
+          minAngle: 30, // 设置扇区最小角度
+          data: seriesData
+        },
+      ]
+    };
+    // 使用刚指定的配置项和数据显示图表
+    myChart.setOption(chartOption);
+  </script>
+</body>
+
+</html>
