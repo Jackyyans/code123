@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="./image/logo.jpg" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>怎么给ECharts柱状图加背景？</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="demo" style="height: 300px;"></div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts-en.min.js"></script>
+    <script type="text/javascript">
+      var options = {
+        xAxis: [
+          { type: "category", data: ["apple", "orange", "banana"] },
+          { type: "category", data: ["apple", "orange", "banana"] },
+        ],
+        yAxis: {},
+        series: [
+          {
+            type: "bar",
+            barWidth: 12,
+            xAxisIndex: 0,
+            data: [143, 185, 193],
+          },
+          {
+            type: "bar",
+            barWidth: 12,
+            xAxisIndex: 0,
+            data: [90, 180, 300],
+          },
+          {
+            type: "bar",
+            barWidth: 12,
+            xAxisIndex: 0,
+            data: [186, 65, 450],
+          },
+          {
+            // 背景
+            type: "bar",
+            barCategoryGap: "60%",
+            xAxisIndex: 1,
+            data: [500, 500, 500],
+            itemStyle: {
+              normal: { color: "rgba(0, 0, 0, 0.05)" },
+            },
+          },
+        ],
+      };
+
+      var dom = document.getElementById("demo");
+      var myChart = echarts.init(dom);
+      myChart.setOption(options);
+    </script>
+  </body>
+</html>
