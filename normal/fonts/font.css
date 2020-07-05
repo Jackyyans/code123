@@ -1,0 +1,13 @@
+@font-face {
+  /* 自定义的字体名字 */
+  font-family: 'myCoolFont';
+  /*本地的字体地址*/
+  src: url('./dsdigi1-webfont.eot'); /* IE9 Compat Modes */
+  src: url('./dsdigi1-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ 
+  url('./dsdigi1-webfont.woff') format('woff'), /* Modern Browsers */ 
+  url('./dsdigi1-webfont.woff2') format('woff2'), /* Modern Browsers */
+  url('./dsdigi1-webfont.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('./dsdigi1-webfont.svg#myCoolFont') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
