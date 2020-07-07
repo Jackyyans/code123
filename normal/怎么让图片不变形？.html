@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset='utf-8'>
+  <link rel="shortcut icon" href="./image/logo.jpg">
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>怎么让图片不变形?</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <style>
+    .picture-wrap {
+      float: left;
+    }
+
+    .picture-wrap .picture {
+      display: block;
+      width: 300px;
+      height: 200px;
+    }
+
+    .my-picture {
+      float: left;
+      width: 300px; /* 可以使用百分比 */
+      padding-bottom: 200px; /* 可以使用百分比 */
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- img标签的方式使用图片 -->
+  <div class="picture-wrap">
+    <img class="picture" src="../normal/image/one-piece-luffy.jpg" alt="one-piece-luffy">
+  </div>
+  <!-- 背景图片的方式使用图片 -->
+  <div class="my-picture" style="background-image: url(../normal/image/one-piece-luffy.jpg);"></div>
+</body>
+
+</html>
