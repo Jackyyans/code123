@@ -1,21 +1,15 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Vue from "vue";
+import Router from "vue-router";
+import MoreClick from "@/pages/MoreClick";
 
-import MoreClick from '@/pages/MoreClick'
-
-
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'home',
-    },{
-      path: '/moreClick',
-      name: 'moreClick',
+      path: "/moreClick",
+      name: "moreClick",
       component: MoreClick
     }
   ]
-})
+});

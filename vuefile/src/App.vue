@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <div class="lf">
-      <router-link to="/moreClick">MoreClick</router-link>
+      <router-link to="/moreClick">moreClick</router-link>
     </div>
     <div class="rt">
       <router-view />
@@ -24,27 +24,33 @@ export default {
   font-family: "Courier New", Courier, monospace;
   box-sizing: border-box;
 }
+
 html,
 body {
   width: 100%;
   height: 100%;
 }
+
 .wrap {
   width: 100%;
   height: 100%;
   display: flex;
 }
+
 .wrap .lf {
   height: 100%;
-  border-right: 1px solid #ccc;
-  width: 300px;
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  width: 280px;
   overflow-y: auto;
   padding: 0 20px;
 }
+
 .wrap .lf a {
   display: block;
-  padding: 10px 0;
+  padding: 8px 0;
+  word-break: break-word;
 }
+
 .wrap .rt {
   height: 100%;
   overflow-y: auto;

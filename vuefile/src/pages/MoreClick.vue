@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
     <span @click="update" class="btn">更新数据</span>
     <div id="chart1" ref="charts" style="height: 300px;"></div>
     <div>
@@ -7,9 +7,7 @@
       <template v-if="obj.name"> {{ obj.name }}-{{ obj.val }} </template>
       <template v-else>暂无数据</template>
     </div>
-    <p>
-      触发点击的次数：{{num}}
-    </p>
+    <p>触发点击的次数：{{ num }}</p>
   </div>
 </template>
 
@@ -17,7 +15,7 @@
 import echarts from "echarts";
 
 export default {
-  name: "HelloWorld",
+  name: "MoreClick",
   data() {
     return {
       data: [143, 185],
@@ -60,7 +58,7 @@ export default {
 
       myChart.on("click", params => {
         console.log("click", params);
-        this.num = this.num +1;
+        this.num = this.num + 1;
         this.obj = {
           name: params.name,
           val: params.value
@@ -71,7 +69,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .btn {
   display: inline-block;
