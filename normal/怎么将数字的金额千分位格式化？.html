@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset='utf-8'>
+  <link rel="shortcut icon" href="./image/logo.jpg">
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>怎么将数字的金额千分位格式化？</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel="stylesheet" href="../normal/fonts/font.css">
+  <style>
+    body {
+      background: #090822;
+    }
+    .container {
+      float: left;
+      margin-right: 30px;
+    }
+    .money {
+      font-size: 60px;
+      font-family: 'myCoolFont';
+      /*自定义的字体名字*/
+      color: #07c6ff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="formate-before container">
+    <div class="money1 money">520520850</div>
+    <div class="money2 money">13141314.1314</div>
+    <div class="money3 money">-996996996</div>
+    <div class="money4 money">-95279.5279</div>
+  </div>
+  <div class="formate-after container">
+    <div class="money1 money"></div>
+    <div class="money2 money"></div>
+    <div class="money3 money"></div>
+    <div class="money4 money"></div>
+  </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    var number1 = formateNumbers(520520850),
+      number2 = formateNumbers(13141314.1314),
+      number3 = formateNumbers(-9996996996),
+      number4 = formateNumbers(-95279.5279);
+    $('.formate-after .money1').text(number1);
+    $('.formate-after .money2').text(number2);
+    $('.formate-after .money3').text(number3);
+    $('.formate-after .money4').text(number4);
+    /**
+     * @description: 用于将数字金额，处理成千分位格式
+     * @param {Number} num 需要处理的数字
+     * @param {String} mark 用于分隔的字符
+     * @return:{String} 千分位格式的金额
+     */
+    function formateNumbers(number, mark) {
+      var separator = mark || ',';
+      // 将数字根据小数点'.'分割成数组
+      var arrNumber = number && number.toString().split('.');
+      if (arrNumber && arrNumber.length) {
+        // 将小数点前面的数字，添加分隔符
+        arrNumber[0] = arrNumber[0].replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+      }
+      // 将数组处理为字符串返回
+      return arrNumber && arrNumber.join('.');
+    }
+  </script>
+</body>
+
+</html>
