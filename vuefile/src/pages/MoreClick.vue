@@ -1,13 +1,14 @@
 <template>
   <div>
     <span @click="update" class="btn">更新数据</span>
-    <div id="chart1" ref="charts" style="height: 300px;"></div>
-    <div>
-      <span>数据展示：</span>
-      <template v-if="obj.name"> {{ obj.name }}-{{ obj.val }} </template>
-      <template v-else>暂无数据</template>
-    </div>
-    <p>触发点击的次数：{{ num }}</p>
+    <div ref="chartBox" style="height: 300px;"></div>
+    <p>数据展示：</p>
+    <template v-if="obj.name">
+      <span>{{ obj.name }}</span>
+      （<span style="color: red; font-weight: 700;">{{ obj.value }}</span
+      >）
+    </template>
+    <template v-else>暂无数据</template>
   </div>
 </template>
 
@@ -19,8 +20,7 @@ export default {
   data() {
     return {
       data: [143, 185],
-      obj: {},
-      num: 0
+      obj: {}
     };
   },
   watch: {
@@ -37,11 +37,13 @@ export default {
   methods: {
     update() {
       this.data = [100, 90];
+      this.obj = {};
     },
     draw() {
-      this.num = 0;
       var options = {
-        xAxis: { type: "category", data: ["apple", "orange"] },
+        xAxis: {
+          data: ["apple", "orange"]
+        },
         yAxis: {},
         series: [
           {
@@ -51,17 +53,19 @@ export default {
           }
         ]
       };
-      debugger;
-      var dom = this.$refs.charts;
+
+      var dom = this.$refs.chartBox;
       var myChart = echarts.init(dom);
       myChart.setOption(options);
 
+      myChart.off("click"); //解除绑定
+
       myChart.on("click", params => {
         console.log("click", params);
-        this.num = this.num + 1;
+
         this.obj = {
           name: params.name,
-          val: params.value
+          value: params.value
         };
       });
     }
