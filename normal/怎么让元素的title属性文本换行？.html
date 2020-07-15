@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="./image/logo.jpg" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>怎么让元素的title属性文本换行？</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <p
+      title="这里是超长的title
+描述文本"
+    >
+      title属性
+    </p>
+
+    <p id="p">title属性</p>
+  </body>
+  <script>
+    let dom = document.querySelector("#p");
+    dom.setAttribute("title", `这里是超长的title\n描述文本`);
+  </script>
+</html>
