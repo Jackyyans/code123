@@ -14,6 +14,7 @@
 
 <script>
 import echarts from "echarts";
+import Axios from '@/axios'
 
 export default {
   name: "MoreClick",
@@ -33,6 +34,7 @@ export default {
   },
   mounted() {
     this.draw();
+    this.addTokenTest();
   },
   methods: {
     update() {
@@ -68,6 +70,16 @@ export default {
           value: params.value
         };
       });
+    },
+    // 添加自定义token测试
+    addTokenTest() {
+      Axios.testMyToken().then(res => {
+        if (res.code === 0) {
+          // do something...
+        } else if (res.code !== 302) {
+          // do something...
+        }
+      })
     }
   }
 };
