@@ -1,7 +1,10 @@
 <template>
   <div class="wrap">
     <div class="lf" ref="letfDom" style="width: 280px;">
-      <router-link to="/moreClick">moreClick</router-link>
+      <router-link to="/moreClick"
+        >怎么解决ECharts重复触发点击事件？</router-link
+      >
+      <router-link to="/fullScreen">怎么让Vue元素全屏展示？</router-link>
       <div class="touch-div" ref="moveDom">
         <span></span>
         <span></span>
@@ -67,7 +70,6 @@ export default {
   padding: 0;
   margin: 0;
   font-size: 13px;
-  color: #333;
   font-family: "Courier New", Courier, monospace;
   box-sizing: border-box;
 }
