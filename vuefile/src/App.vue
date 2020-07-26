@@ -1,10 +1,9 @@
 <template>
   <div class="wrap">
     <div class="lf" ref="letfDom" style="width: 280px;">
-      <router-link to="/moreClick"
-        >怎么解决ECharts重复触发点击事件？</router-link
-      >
-      <router-link to="/fullScreen">怎么让Vue元素全屏展示？</router-link>
+      <router-link v-for="(item, index) in list" :key="index" :to="item.path">{{
+        item.title
+      }}</router-link>
       <div class="touch-div" ref="moveDom">
         <span></span>
         <span></span>
@@ -22,10 +21,13 @@ export default {
   data() {
     return {
       letfDom: null,
-      clientStartX: 0
+      clientStartX: 0,
+      list: []
     };
   },
   mounted() {
+    this.list = this.$router.options.routes;
+
     this.letfDom = this.$refs.letfDom;
     let moveDom = this.$refs.moveDom;
 
