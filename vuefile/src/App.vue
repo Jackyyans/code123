@@ -1,7 +1,9 @@
 <template>
   <div class="wrap">
     <div class="lf" ref="letfDom" style="width: 280px;">
-      <router-link to="/moreClick">moreClick</router-link>
+      <router-link v-for="(item, index) in list" :key="index" :to="item.path">{{
+        item.title
+      }}</router-link>
       <div class="touch-div" ref="moveDom">
         <span></span>
         <span></span>
@@ -19,10 +21,13 @@ export default {
   data() {
     return {
       letfDom: null,
-      clientStartX: 0
+      clientStartX: 0,
+      list: []
     };
   },
   mounted() {
+    this.list = this.$router.options.routes;
+
     this.letfDom = this.$refs.letfDom;
     let moveDom = this.$refs.moveDom;
 
@@ -67,7 +72,6 @@ export default {
   padding: 0;
   margin: 0;
   font-size: 13px;
-  color: #333;
   font-family: "Courier New", Courier, monospace;
   box-sizing: border-box;
 }
