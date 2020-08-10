@@ -29,7 +29,7 @@ export default {
     this.list = this.$router.options.routes;
 
     this.letfDom = this.$refs.letfDom;
-    let moveDom = this.$refs.moveDom;
+    const moveDom = this.$refs.moveDom;
 
     moveDom.onmousedown = e => {
       this.clientStartX = e.clientX;
@@ -39,7 +39,7 @@ export default {
         this.moveHandle(e.clientX, this.letfDom);
       };
 
-      document.onmouseup = e => {
+      document.onmouseup = () => {
         document.onmouseup = null;
         document.onmousemove = null;
       };
@@ -47,8 +47,8 @@ export default {
   },
   methods: {
     moveHandle(nowClientX, letfDom) {
-      let computedX = nowClientX - this.clientStartX;
-      let leftBoxWidth = parseInt(letfDom.style.width);
+      const computedX = nowClientX - this.clientStartX;
+      const leftBoxWidth = parseInt(letfDom.style.width);
       let changeWidth = leftBoxWidth + computedX;
 
       if (changeWidth < 280) {

@@ -26,11 +26,11 @@ axios.interceptors.request.use(
       fullscreen: true
     });
     // 这个token是随便编的
-    let token = "sdsklssdfkdlsfkkskjfskfj";
+    const token = "sdsklssdfkdlsfkkskjfskfj";
     // 添加自定义token字段，mytoken
     config.headers.myToken = token;
     // 添加其他自定义字段，otherParams
-    let otherParams = "sdfsf44545456456";
+    const otherParams = "sdfsf44545456456";
     config.headers.otherParams = otherParams;
     return config;
   },
@@ -102,7 +102,7 @@ export function get(url, params = {}, responseType) {
       .get(url, {
         params: params,
         responseType: responseType,
-        // 用于发送这种格式的请求，url?name=1&name=2&name=3
+        // 用于发送这种格式的请求，url?ids=1&ids=2&id=3
         paramsSerializer: params => {
           return QS.stringify(params, { indices: false });
         }
@@ -132,7 +132,6 @@ export function post(url, params = {}, json = false) {
     "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
   };
   return new Promise((resolve, reject) => {
-    // params，传对象就可以了
     axios
       .post(url, json ? JSON.stringify(params) : QS.stringify(params), {
         headers: json ? headerJSON : headerFormData

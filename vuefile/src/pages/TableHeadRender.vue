@@ -38,7 +38,7 @@ export default {
     };
   },
   methods: {
-    renderHeader(h, { column, $index }) {
+    renderHeader(h, { column }) {
       return (
         <el-tooltip content={column.label} placement="top">
           <span>
