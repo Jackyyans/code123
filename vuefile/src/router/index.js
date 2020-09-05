@@ -3,6 +3,9 @@ import Router from "vue-router";
 import MoreClick from "@/pages/MoreClick";
 import FullScreen from "@/pages/FullScreen";
 import TableHeadRender from "@/pages/TableHeadRender";
+import CustomToken from "@/pages/CustomToken";
+import PostHeader from "@/pages/PostHeader";
+import SameProperty from "@/pages/SameProperty";
 
 Vue.use(Router);
 
@@ -25,6 +28,24 @@ export default new Router({
       name: "tableHeadRender",
       title: "怎么自定义Element的Table组件的列标题？",
       component: TableHeadRender
+    },
+    {
+      path: "/customToken",
+      name: "customToken",
+      title: "怎么给axios添加自定义的token字段？",
+      component: CustomToken
+    },
+    {
+      path: "/postHeader",
+      name: "postHeader",
+      title: "怎么让axios发送json格式的请求数据？",
+      component: PostHeader
+    },
+    {
+      path: "/sameProperty",
+      name: "sameProperty",
+      title: "怎么发送属性相同，值不同的axios请求(url?name=1&name=2&name=3)?",
+      component: SameProperty
     }
   ]
 });
