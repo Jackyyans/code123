@@ -2,7 +2,7 @@
   <div class="wrap">
     <div class="lf" ref="letfDom" style="width: 280px;">
       <router-link v-for="(item, index) in list" :key="index" :to="item.path">{{
-        item.title
+        item.meta.title
       }}</router-link>
       <div class="touch-div" ref="moveDom">
         <span></span>
